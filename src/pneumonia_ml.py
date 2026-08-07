@@ -1,7 +1,5 @@
 from io import BytesIO
-from tkinter import Image
 
-import pandas as pd
 from dash import html, dcc, callback, Input, Output, State
 from dash import dash_table as dt
 import dash_bootstrap_components as dbc
@@ -35,31 +33,27 @@ class ML:
     self.sample_files_normal = [f for f in os.listdir(self.sample_dir_normal) if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
     self.sample_dir_pneumonia = os.getcwd() + '/data/PNEUMONIA/'
     self.sample_files_pneumonia = [f for f in os.listdir(self.sample_dir_pneumonia) if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
-    print('normal', len(self.sample_files_normal), 'pneumonia', len(self.sample_files_pneumonia))
 
   def get_random_sample(self):
     sample_dir = None
     sample_file = None
     condition = '?'
     num = random.randint(0, 1)
-    print('num', num)
+
     if num == 0:
       sample_dir = self.sample_dir_normal
       if self.sample_dir_normal is not None and len(self.sample_dir_normal) > 0:
         pick = random.randint(0, len(self.sample_files_normal)-1)
-        print('pick', pick, len(self.sample_files_normal))
         sample_file = self.sample_files_normal[pick]
         condition = 'NORMAL'
     elif num == 1:
       sample_dir = self.sample_dir_pneumonia
       if self.sample_files_pneumonia is not None and len(self.sample_files_pneumonia) > 0:
         pick = random.randint(0, len(self.sample_files_pneumonia)-1)
-        print('pick', pick, len(self.sample_files_pneumonia))
         sample_file = self.sample_files_pneumonia[pick]
         condition = 'PNEUMONIA'
   
     if sample_file is not None and sample_dir is not None:
-      print(sample_file)
       img_path = os.path.join(sample_dir, sample_file)
       img = Image.open(img_path)
       return sample_file, img_path, img, condition
@@ -173,7 +167,7 @@ class ML:
 
     infer_text = '''
     If you are working on a very strange case and is wondering if it is normal or
-    not ... why not ask AI?
+    pneumonia ... why not ask AI?
     '''
     infer_text_md = dcc.Markdown(infer_text)
 
@@ -233,9 +227,9 @@ class ML:
         binary = base64.b64decode(encoded, validate=True)
         img = Image.open(BytesIO(binary))
         img.load()  # Load the image to ensure it's valid
-        print("Format:", img.format)
-        print("Mode:", img.mode)
-        print("Size:", img.size)
+        # print("Format:", img.format)
+        # print("Mode:", img.mode)
+        # print("Size:", img.size)
         return img
       except Exception as e:
         print("Base64 decode error:", e)
@@ -249,13 +243,12 @@ class ML:
       prevent_initial_call=False
     )
     def update_output(contents, name, date):
-      # print(contents, name, date)
       if contents is not None:
         children = parse_contents(contents, name, date)
         
         self.uploaded_contents = contents
         img = base64_to_image(contents)
-        print(img.size)
+
         if img is not None:
           pred, proba = self.pm.predict(img)
           self.infer = (pred, proba)

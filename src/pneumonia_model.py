@@ -1,13 +1,11 @@
 from fastai.vision.all import load_learner
 import os
-import cv2
 
 
 class PneumoniaModel:
   def __init__(self, model=None):
     if model is None:
       self.model = self.load_model()
-      ...
     else:
       if isinstance(model, str):
         self.model = self.load_model(model)
