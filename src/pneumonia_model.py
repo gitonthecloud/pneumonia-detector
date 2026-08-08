@@ -14,18 +14,20 @@ class PneumoniaModel:
     self.model = None
 
   def load_model(self, model_name='pneumonia_detector.pkl'):
-    # # Only load this memory-intensive model when needed.
-    # from fastai.vision.all import load_learner
+    print(f'loading model')
+    
+    # Only load this memory-intensive model when needed.
+    from fastai.vision.all import load_learner
 
-    # # WARNING: load_learner uses Python's insecure pickle. Only load the models you trust.
-    # model_path = os.path.join(os.getcwd(), "assets", model_name)
+    # WARNING: load_learner uses Python's insecure pickle. Only load the models you trust.
+    model_path = os.path.join(os.getcwd(), "assets", model_name)
 
-    # if os.path.exists(model_path):
-    #   self.model = load_learner(model_path)
-    #   return self.model
-    # else:
-    #   raise FileNotFoundError(f"Model file '{model_path}' not found. Please ensure the model file exists.")
-    ...
+    if os.path.exists(model_path):
+      self.model = load_learner(model_path)
+      return self.model
+    else:
+      raise FileNotFoundError(f"Model file '{model_path}' not found. Please ensure the model file exists.")
+
 
 
   def predict(self, img):
