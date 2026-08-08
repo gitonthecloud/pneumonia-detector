@@ -1,6 +1,7 @@
 
 import os
 
+
 class PneumoniaModel:
   _instance = None
 
@@ -10,12 +11,7 @@ class PneumoniaModel:
     return cls._instance
 
   def __init__(self, model=None):
-    if model is None:
-      self._instance = self.load_model()
-    else:
-      if isinstance(model, str):
-        self._instance = self.load_model(model)
-
+    self.model = None
 
   def load_model(self, model_name='pneumonia_detector.pkl'):
     # Only load this memory-intensive model when needed.
@@ -25,6 +21,9 @@ class PneumoniaModel:
     return load_learner(os.getcwd() + '/model/' + model_name)
 
   def predict(self, img):
-    pred, pred_idx, probs = self._instance.predict(img)
+    if self.model is None:
+      self.model = self.load_model()
+
+    pred, pred_idx, probs = self.model.predict(img)
     return pred, float(probs[pred_idx])
 
