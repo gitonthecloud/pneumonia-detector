@@ -31,9 +31,11 @@ class PneumoniaModel:
     if self.model is None:
       # print('Model is not loaded. Please load the model before making predictions.')
       # return "Error", 0.0
+      print('Loading model...')
       self.load_model()  # Load the model if it hasn't been loaded yet
 
     try:
+      print('Making prediction...')
       pred, pred_idx, probs = self.model.predict(img)
       return pred, float(probs[pred_idx])
     except Exception as e:
