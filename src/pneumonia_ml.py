@@ -26,7 +26,7 @@ class ML:
   def get_sample_files(self):
     # TODO: consider using generator to yield sample files instead of loading all at once
 
-    base_dir = os.path.dirname(os.getcwd())
+    base_dir = os.getcwd()
     data_dir = os.path.join(base_dir, "data")
     norm_dir = os.path.join(data_dir, "NORMAL")
     pneu_dir = os.path.join(data_dir, "PNEUMONIA")
