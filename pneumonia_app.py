@@ -2,6 +2,7 @@
 import dash_bootstrap_components as dbc
 from dash import Dash
 from src.pneumonia_ml import ML
+import os
 
 
 # Incorporate data
@@ -18,4 +19,4 @@ server = app.server
 app.layout = dbc.Container(layout)
 
 if __name__ == '__main__':
-  app.run(debug=True, port=55006)
+  app.run(debug=True, port=os.getenv('PORT', 55006))
