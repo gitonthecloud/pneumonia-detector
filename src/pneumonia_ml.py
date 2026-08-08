@@ -129,10 +129,9 @@ class ML:
     @callback(
       Output('sample-res', 'children'),
       Input('sample-button', 'n_clicks'),
-      State('sample-button', 'filename'),
       prevent_initial_call=False
     )
-    def update_sample(n_clicks, filename):
+    def update_sample(n_clicks):
       if n_clicks is not None:
           sample_file, img_path, img, cond = self.get_random_sample()
           pred, proba = self.pm.predict(img_path)
