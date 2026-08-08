@@ -58,11 +58,11 @@ class ML:
 
   def run(self):
     self.get_sample_files()
-    self.pm.load_model()
+    # self.pm.load_model()
 
     title = html.H1('Pneumonia Detector',
                     style={
-                      'text-align': 'center'
+                      'textAlign': 'center'
                     })
 
     intro_img = html.Img(src='assets/pneumonia.jpg', alt='Pneumonia image',
@@ -81,7 +81,7 @@ class ML:
     copyright = html.Div('@ 2026 - Swee Hing Lee',
                          style={'font-size': 'xsmall',
                                 'color': 'black',
-                                'text-align': 'center'})
+                                'textAlign': 'center'})
     hdr1 = html.Div([html.Br(), title])
     hdr2 = html.Div([intro_img,bg_text_md],
                     style={'margin': '0 160px'})
@@ -89,8 +89,8 @@ class ML:
 
     final_hdr = html.Div([hdr1, hdr2, hdr3],
                    style={
-                     'background-color': 'skyblue',
-                     'border-radius': '10px',
+                     'backgroundColor': 'skyblue',
+                     'borderRadius': '10px',
                      'padding': '20px'
                    })
 
@@ -101,12 +101,12 @@ class ML:
                                 style={
                                   'margin':'0 10px',
                                   'hidden': 'true',
-                                  'font-size': '20px',
+                                  'fontSize': '20px',
                                   'padding': '2px 12px'})
 
     sample_res = html.Div(id='sample-res',
                   style={
-                     'background-color': 'white',
+                     'backgroundColor': 'white',
 
                      'padding': '20px',
 
@@ -138,8 +138,8 @@ class ML:
                                'height':'200px',
                                'float': 'left',
                                'padding': '0 10px',
-                               'object-fit': 'contain',
-                               'object-position': 'center'}),
+                               'objectFit': 'contain',
+                               'objectPosition': 'center'}),
               html.Div([
                 # html.H5(sample_file),
                 html.H4(f'Actual: {cond}'),
@@ -153,8 +153,8 @@ class ML:
               # 'border-radius': '10px',
               # 'padding': '20px',
               'display': 'flex',
-              'align-items': 'center',
-              # 'justify-content': 'center',
+              'alignItems': 'center',
+              # 'justifyContent': 'center',
               'overflow': 'hidden'
               })
           ]
@@ -196,8 +196,8 @@ class ML:
                                         
     ],
       style={
-        'background-color': '#f9f9f9',
-        'border-radius': '10px',
+        'backgroundColor': '#f9f9f9',
+        'borderRadius': '10px',
         'padding': '20px'
       })
 
@@ -258,8 +258,8 @@ class ML:
             ],
               style={
                 'padding': '2px 0',
-                'font-weight': 'bold',
-                'font-size': '40px'
+                'fontWeight': 'bold',
+                'fontSize': '40px'
               })
           ]
         else:
@@ -274,7 +274,7 @@ class ML:
                                 style={
                                   'margin':'0 10px',
                                   'hidden': 'true',
-                                  'font-size': '20px',
+                                  'fontSize': '20px',
                                   'padding': '2px 12px'})
 
     
