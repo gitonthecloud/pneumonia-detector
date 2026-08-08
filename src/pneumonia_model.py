@@ -17,6 +17,8 @@ class PneumoniaModel:
     print(f'loading model')
 
     # Only load this memory-intensive model when needed.
+    # At the time of writing, this model takes up 1.2GB of memory.
+    # Ensure that the provisioning service has enough memory before deployment.
     from fastai.vision.all import load_learner
 
     # WARNING: load_learner uses Python's insecure pickle. Only load the models you trust.
