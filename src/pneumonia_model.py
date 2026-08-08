@@ -18,12 +18,17 @@ class PneumoniaModel:
     from fastai.vision.all import load_learner
 
     # WARNING: load_learner uses Python's insecure pickle. Only load the models you trust.
-    return load_learner(os.getcwd() + '/model/' + model_name)
+    self.model = load_learner(os.getcwd() + '/model/' + model_name)
+    return self.model
 
   def predict(self, img):
     if self.model is None:
-      self.model = self.load_model()
+      print('Model is not loaded. Please load the model before making predictions.')
+      return "Error", 0.0
 
-    pred, pred_idx, probs = self.model.predict(img)
-    return pred, float(probs[pred_idx])
-
+    try:
+      pred, pred_idx, probs = self.model.predict(img)
+      return pred, float(probs[pred_idx])
+    except Exception as e:
+      print(f"Error occurred while making prediction: {e}")
+      return "Error", 0.0
