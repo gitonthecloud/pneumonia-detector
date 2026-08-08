@@ -26,15 +26,15 @@ class ML:
   def get_sample_files(self):
     # TODO: consider using generator to yield sample files instead of loading all at once
 
-    # BASE = os.path.dirname(os.path.abspath(__file__))
-    # path = os.path.join(BASE, "data", "sample.png")
-    # DATA_DIR = os.path.join(BASE_DIR, "data")
-    # img_path = os.path.join(DATA_DIR, "sample.png")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(base_dir, "data")
+    norm_dir = os.path.join(data_dir, "NORMAL")
+    pneu_dir = os.path.join(data_dir, "PNEUMONIA")
 
-    self.sample_dir_normal = os.getcwd() + '/data/NORMAL/'
-    self.sample_files_normal = [f for f in os.listdir(self.sample_dir_normal) if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
-    self.sample_dir_pneumonia = os.getcwd() + '/data/PNEUMONIA/'
-    self.sample_files_pneumonia = [f for f in os.listdir(self.sample_dir_pneumonia) if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
+    self.sample_dir_normal = norm_dir
+    self.sample_files_normal = [f for f in os.listdir(norm_dir) if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
+    self.sample_dir_pneumonia = pneu_dir
+    self.sample_files_pneumonia = [f for f in os.listdir(pneu_dir) if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
 
   def get_random_sample(self):
     sample_dir = None
@@ -64,7 +64,7 @@ class ML:
 
   def run(self):
     self.get_sample_files()
-    # self.pm.load_model()
+    self.pm.load_model()
 
     title = html.H1('Pneumonia Detector',
                     style={
