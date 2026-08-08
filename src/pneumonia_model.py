@@ -18,8 +18,14 @@ class PneumoniaModel:
     from fastai.vision.all import load_learner
 
     # WARNING: load_learner uses Python's insecure pickle. Only load the models you trust.
-    self.model = load_learner(os.getcwd() + '/model/' + model_name)
-    return self.model
+    model_path = os.path.join(os.getcwd(), "assets", model_name)
+
+    if os.path.exists(model_path):
+      self.model = load_learner(model_path)
+      return self.model
+    else:
+      raise FileNotFoundError(f"Model file '{model_path}' not found. Please ensure the model file exists.")
+
 
   def predict(self, img):
     if self.model is None:
