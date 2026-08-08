@@ -25,6 +25,12 @@ class ML:
 
   def get_sample_files(self):
     # TODO: consider using generator to yield sample files instead of loading all at once
+
+    # BASE = os.path.dirname(os.path.abspath(__file__))
+    # path = os.path.join(BASE, "data", "sample.png")
+    # DATA_DIR = os.path.join(BASE_DIR, "data")
+    # img_path = os.path.join(DATA_DIR, "sample.png")
+
     self.sample_dir_normal = os.getcwd() + '/data/NORMAL/'
     self.sample_files_normal = [f for f in os.listdir(self.sample_dir_normal) if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
     self.sample_dir_pneumonia = os.getcwd() + '/data/PNEUMONIA/'
@@ -76,7 +82,9 @@ class ML:
     in image processing. It has been trained with chest X-ray images of normal and
     pneumonia cases. It can detect pneumonia cases with an accuracy of up to 99%.
     '''
-    bg_text_md = dcc.Markdown(background_text)
+    # Disable markdown syntax highlighting
+    bg_text_md = dcc.Markdown(background_text, dangerously_allow_html=True)
+
 
     copyright = html.Div('@ 2026 - Swee Hing Lee',
                          style={'fontSize': 'xsmall',
@@ -165,7 +173,7 @@ class ML:
     If you are working on a very strange case and is wondering if it is normal or
     pneumonia ... why not ask AI?
     '''
-    infer_text_md = dcc.Markdown(infer_text)
+    infer_text_md = dcc.Markdown(infer_text, dangerously_allow_html=True)
 
     infer_pred = html.Div(id='infer-pred')
     infer_pred_proba = html.Div(id='infer-pred-proba')
