@@ -1,10 +1,6 @@
-from io import BytesIO
-
 from dash import html, dcc, callback, Input, Output, State
-from dash import dash_table as dt
 import dash_bootstrap_components as dbc
 from src.pneumonia_model import PneumoniaModel
-import datetime
 import os
 import base64
 from io import BytesIO
