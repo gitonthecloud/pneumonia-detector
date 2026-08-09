@@ -19,4 +19,4 @@ server = app.server
 app.layout = dbc.Container(layout)
 
 if __name__ == '__main__':
-  app.run(debug=True, port=os.getenv('PORT', 55006))
+  app.run(debug=False, port=os.getenv('PORT', 55006))
