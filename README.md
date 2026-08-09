@@ -18,3 +18,6 @@ The following settings are used:
 Build Command: pip install -r requirements.txt
 Start Command: gunicorn pneumonia_app:server --bind 0.0.0.0:$PORT --workers=1 --threads=1 --timeout=120
 Environment Variables: PORT <any number starting from 10000>
+
+In order to instruct Render to use a specific version of Python, create a file called "runtime.txt"
+in the project root directory and put the desired Python version in it e.g. python-3.10.12
