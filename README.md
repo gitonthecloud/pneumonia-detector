@@ -10,3 +10,11 @@ License: https://creativecommons.org/licenses/by/4.0/ (CC BY 4.0)
 Some of the test data have been bundled here for demonstration only. There is no intention
 to distribute them. Therefore, a licence is not required for this scenario. If the
 circumstance changes later on, then, a licence should be added.
+
+# Provisioning
+This app is currently deployed at render.com.
+
+The following settings are used:
+Build Command: pip install -r requirements.txt
+Start Command: gunicorn pneumonia_app:server --bind 0.0.0.0:$PORT --workers=1 --threads=1 --timeout=120
+Environment Variables: PORT <any number starting from 10000>
