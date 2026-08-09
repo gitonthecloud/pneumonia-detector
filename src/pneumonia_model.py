@@ -25,6 +25,7 @@ class PneumoniaModel:
     model_path = os.path.join(os.getcwd(), "assets", model_name)
 
     if os.path.exists(model_path):
+      print(f'Loading {model_path}')
       self.model = load_learner(model_path)
       return self.model
     else:
@@ -36,6 +37,7 @@ class PneumoniaModel:
     if self.model is None:
       # print('Model is not loaded. Please load the model before making predictions.')
       # return "Error", 0.0
+      print('predict: about to load model...')
       self.load_model()  # Load the model if it hasn't been loaded yet
 
     try:
