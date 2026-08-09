@@ -64,6 +64,7 @@ class ML:
 
   def run(self):
     self.get_sample_files()
+    print('run: about to load model...')
     self.pm.load_model()
 
     title = html.H1('Pneumonia Detector',
