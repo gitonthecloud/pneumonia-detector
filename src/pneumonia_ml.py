@@ -86,7 +86,7 @@ class ML:
     bg_text_md = dcc.Markdown(background_text, dangerously_allow_html=True)
 
 
-    copyright = html.Div('@ 2026 - Swee Hing Lee',
+    copyright = html.Div('© 2026 - Swee Hing Lee',
                          style={'fontSize': 'xsmall',
                                 'color': 'black',
                                 'textAlign': 'center'})
