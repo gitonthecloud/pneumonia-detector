@@ -138,7 +138,7 @@ class ML:
     def update_sample(n_clicks):
       if n_clicks is not None:
           sample_file, img_path, img, cond = self.get_random_sample()
-          pred, proba = self.pm.predict(img_path)
+          pred, proba = self.pm.predict(img_path, sample_file)
           return [
             html.Div([
               html.Img(src=img,
@@ -254,7 +254,7 @@ class ML:
         img = base64_to_image(contents)
 
         if img is not None:
-          pred, proba = self.pm.predict(img)
+          pred, proba = self.pm.predict(img, name)
           self.infer = (pred, proba)
           # return [children, infer_pred, infer_pred_proba]
           return [children, infer_button,
