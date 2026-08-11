@@ -7,7 +7,6 @@ node_modules
 .venv
 dist
 build
-data
 *.log
 *.cache
 .cache/
