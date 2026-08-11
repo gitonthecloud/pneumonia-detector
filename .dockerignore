@@ -5,8 +5,9 @@ __pycache__
 node_modules
 .env
 .venv
-dist
-build
+tmp/
+dist/
+build/
 *.log
 *.cache
 .cache/
