@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the entire app package.
 COPY app/ ./app
 
-CMD ["python", "pneumonia_app.py"]
+CMD ["python", "app/pneumonia_app.py"]
