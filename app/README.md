@@ -31,3 +31,14 @@ in the project root directory and put the desired Python version in it e.g. 3.10
 file is NOT specified in .gitignore.
 
 2. Inside the project in Render, add environment variable, PYTHON_VERSION, with value 3.10.12
+
+# Development Testing
+
+On local machine, run the app as a module i.e. using "python3 -m app.pneumonia_app". The -m option
+tells Python to set the import root as project root directory. So, import statement beginning with
+"app" will work.
+
+Don't run it as a script i.e. using "python3 app/pneumonia_app.py" which will not work. In this
+case, Python sets the import root as the directory that contains pneumonia_app.py, resulting in
+bad path in import statements. The only time this script method would work is if pneumonia_app.py
+resides in the project root directory. This can be verified by checking value of "sys.path".

@@ -1,8 +1,9 @@
-
+import os
 import dash_bootstrap_components as dbc
 from dash import Dash
-from src.pneumonia_ml import ML
-import os
+from app.src.pneumonia_ml import ML
+
+
 
 
 # Incorporate data

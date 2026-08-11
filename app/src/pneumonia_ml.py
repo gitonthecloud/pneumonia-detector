@@ -1,11 +1,14 @@
 from dash import html, dcc, callback, Input, Output, State
 import dash_bootstrap_components as dbc
-from src.pneumonia_model import PneumoniaModel
 import os
 import base64
 from io import BytesIO
 from PIL import Image
 import random
+
+# specify import path relative to project root in order for cloud / docker deployment to work.
+from app.src.pneumonia_model import PneumoniaModel
+
 
 
 class ML:
