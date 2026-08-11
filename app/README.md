@@ -16,8 +16,11 @@ circumstance changes later on, then, a licence should be added.
 This app is currently deployed at render.com.
 
 The following settings are used:
-Build Command: pip install -r requirements.txt
+
+Build Command: pip install -r app/requirements.txt
+
 Start Command: gunicorn pneumonia_app:server --bind 0.0.0.0:$PORT --workers=1 --threads=1 --timeout=120
+
 Environment Variables: PORT <any number starting from 10000>
 
 In order to instruct Render to use a specific version of Python, at the time of this writing,
