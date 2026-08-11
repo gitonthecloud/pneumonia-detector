@@ -23,7 +23,8 @@ jobs:
     - name: Build Docker image
       uses: docker/build-push-action@v6
       with:
-        context: .    # match the root directory that contains all required files
+        # match the context to the root directory that contains all required files
+        context: .
         push: true
         tags: whalingonthecloud/pneumonia-detector:latest
 
