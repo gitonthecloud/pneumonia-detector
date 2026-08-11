@@ -20,7 +20,7 @@ class PneumoniaModel:
       # service has enough memory before deployment.
       from fastai.vision.all import load_learner
 
-      model_path = os.path.join(os.getcwd(), "assets", model_name)
+      model_path = os.path.join(os.getcwd(), "app", "assets", model_name)
       if os.path.exists(model_path):
         print(f'Loading {model_path}')
 
