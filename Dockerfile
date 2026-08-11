@@ -3,6 +3,7 @@ FROM python:3.10-slim AS base
 # Define working directory in docker container
 WORKDIR /pneumonia-detector
 
+# Ensures Python looks in the right place to import packages
 ENV PYTHONPATH=/pneumonia-detector
 
 # Install dependencies first (better caching)
