@@ -25,5 +25,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: whalingonthecloud/pnuemonia-detector:latest
+        tags: whalingonthecloud/pneumonia-detector:latest
 
