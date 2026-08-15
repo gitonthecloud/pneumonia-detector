@@ -35,10 +35,11 @@ class PneumoniaModel:
 
   def predict(self, img, filename=None):
     try:
-      if self.model is None:
-        # print('Model is not loaded. Please load the model before making predictions.')
-        # return "Error", 0.0
-        self.load_model()  # Load the model if it hasn't been loaded yet
+      # NOTE: Disable to allow successful deploy in free-tier provisioning
+      # if self.model is None:
+      #   # print('Model is not loaded. Please load the model before making predictions.')
+      #   # return "Error", 0.0
+      #   self.load_model()  # Load the model if it hasn't been loaded yet
 
       # print(f"Making prediction on {filename if filename else 'Unnamed Image'}")
       # pred, pred_idx, probs = self.model.predict(img)
