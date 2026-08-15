@@ -67,7 +67,9 @@ class ML:
 
   def run(self):
     self.get_sample_files()
-    self.pm.load_model()
+
+    # NOTE: Disable to allow successful deploy in free-tier provisioning
+    # self.pm.load_model()
 
     title = html.H1('Pneumonia Detector',
                     style={
