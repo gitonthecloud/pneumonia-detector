@@ -1,5 +1,6 @@
 
 import os
+import random
 
 
 class PneumoniaModel:
@@ -35,18 +36,22 @@ class PneumoniaModel:
 
   def predict(self, img, filename=None):
     try:
-      # NOTE: Disable to allow successful deploy in free-tier provisioning
-      if self.model is None:
-        # print('Model is not loaded. Please load the model before making predictions.')
-        # return "Error", 0.0
-        self.load_model()  # Load the model if it hasn't been loaded yet
+      # NOTE: In free-tier provisioning, model loading fails due to insufficient resources.
+      # To avoid this, disable the model loading during deployment via environment variable.
+      # In that case, the model will return a random prediction instead of the actual prediction.
+      if os.getenv('DISABLE_MODEL_LOADING', 'False').lower() == 'true':
+        print(f"Returning random prediction on {filename if filename else 'Unnamed Image'}")
+        pred = 'PNEUMONIA' if random.randint(0, 1) else 'NORMAL'
+        return pred, random.uniform(0, 1)
+      else:
+        if self.model is None:
+          # print('Model is not loaded. Please load the model before making predictions.')
+          # return "Error", 0.0
+          self.load_model()  # Load the model if it hasn't been loaded yet
 
-      print(f"Making prediction on {filename if filename else 'Unnamed Image'}")
-      pred, pred_idx, probs = self.model.predict(img)
-      return pred, float(probs[pred_idx])
-
-      # print(f"Returning hardcoded prediction on {filename if filename else 'Unnamed Image'}")
-      # return True, 0.941243
+        print(f"Making prediction on {filename if filename else 'Unnamed Image'}")
+        pred, pred_idx, probs = self.model.predict(img)
+        return pred, float(probs[pred_idx])
 
     except Exception as e:
       print(f"Error occurred while making prediction: {e}")

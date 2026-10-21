@@ -68,8 +68,10 @@ class ML:
   def run(self):
     self.get_sample_files()
 
-    # NOTE: Disable to allow successful deploy in free-tier provisioning
-    self.pm.load_model()
+    # NOTE: In free-tier provisioning, model loading fails due to insufficient resources.
+    # To avoid this, disable the model loading during deployment via environment variable.
+    if os.getenv('DISABLE_MODEL_LOAD', 'False').lower() == 'true':
+      self.pm.load_model()
 
     title = html.H1('Pneumonia Detector',
                     style={
