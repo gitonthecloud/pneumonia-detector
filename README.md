@@ -108,12 +108,16 @@ Then open http://localhost:PORT.
 
 ## Project structure
 ```
-├── app/               # web app / inference code
-├── notebooks/         # training and evaluation
-├── models/            # model weights (or download link)
-├── tests/
-├── Dockerfile
-└── .github/workflows/
+├── app/                          # app root directory
+│   ├── assets/                   # model
+│   ├── data                      # sample chest X-ray images
+│   ├── requirements.txt          # application requirements
+│   └── src                       # inference code
+├── Dockerfile                    # Docker container
+├── LICENSE.txt
+├── README.md
+├── run.sh                        # run script for local use
+└── .github/workflows/            # GitHub Actions
 ```
 
 
